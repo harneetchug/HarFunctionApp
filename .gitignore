@@ -1,0 +1,8 @@
+target/
+local.settings.json
+.vscode/
+
+# Azurite (VERY IMPORTANT)
+__azurite_db_*.json
+__blobstorage__/
+__queuestorage__/
