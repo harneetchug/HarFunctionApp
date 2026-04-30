@@ -24,12 +24,7 @@ jobs:
 
       - name: Build with Maven
         run: mvn clean package azure-functions:package
-
-      - name: Debug path
-        run: find . -type d -name "azure-functions"
         
-      - name: Debug package path
-        run: echo $PACKAGE_PATH
 
       - name: Deploy to Azure Functions
         uses: Azure/functions-action@v1
