@@ -27,14 +27,13 @@ jobs:
 
       - name: Debug path
         run: find . -type d -name "azure-functions"
+        
+      - name: Debug package path
+        run: echo $PACKAGE_PATH
 
-      - name: Get package path
-        id: package
-        run: echo "PACKAGE_PATH=$(ls -d target/azure-functions/*)" >> $GITHUB_ENV
-
-      - name: Deploy
+      - name: Deploy to Azure Functions
         uses: Azure/functions-action@v1
         with:
-          app-name: test-function-app-har
+          app-name: ${{ env.AZURE_FUNCTIONAPP_NAME }}
           publish-profile: ${{ secrets.AZURE_FUNCTIONAPP_PUBLISH_PROFILE }}
-          package: ${{ env.PACKAGE_PATH }}
+          package: './target/azure-functions/**'
