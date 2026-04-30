@@ -29,6 +29,7 @@ jobs:
         run: |
          mkdir -p output
          cd target/azure-functions
+         cd $(ls -d */ | head -n 1)
          zip -r ../../output/functionapp.zip  
 
       - name: Deploy to Azure Functions
