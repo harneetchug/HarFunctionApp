@@ -38,7 +38,8 @@ jobs:
       - name: Archive function app
         run: |
           mkdir -p output
-          zip -r output/functionapp.zip ${{ steps.pkg.outputs.path }}
+          cd ${{ steps.pkg.outputs.path }}
+          zip -r -r ../../../output/functionapp.zip
 
       - name: Check publish profile
         run: |
