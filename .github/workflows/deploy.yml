@@ -39,7 +39,7 @@ jobs:
         run: |
           mkdir -p output
           cd ${{ steps.pkg.outputs.path }}
-          zip -r ../../../output/functionapp.zip
+          zip -r ../../../output/functionapp.zip .
 
       - name: Check publish profile
         run: |
