@@ -40,6 +40,15 @@ jobs:
           mkdir -p output
           zip -r output/functionapp.zip ${{ steps.pkg.outputs.path }}
 
+      - name: Check publish profile
+        run: |
+          if [ -z "${{ secrets.AZURE_FUNCTIONAPP_PUBLISH_PROFILE }}" ]; then
+          echo "❌ Secret NOT found"
+          exit 1
+          else
+          echo "✅ Secret exists"
+          fi
+
       - name: Deploy
         uses: Azure/functions-action@v1
         with:
