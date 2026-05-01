@@ -16,6 +16,6 @@ public class BlobTriggerJava {
         @BindingName("name") String fileName,
         final ExecutionContext context
     ) {
-        context.getLogger().info("Blob is triggered now......: " + fileName + "\n  Size: " + content.length + " Bytes");
+        context.getLogger().info("Blob is triggered now -deployed by pipeline......: " + fileName + "\n  Size: " + content.length + " Bytes");
     }
 }
