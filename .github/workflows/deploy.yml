@@ -25,16 +25,9 @@ jobs:
       - name: Build with Maven
         run: mvn clean package azure-functions:package
 
-      - name: Archive function app
-        run: |
-         mkdir -p output
-         cd target/azure-functions
-         cd $(ls -d */ | head -n 1)
-         zip -r ../../output/functionapp.zip  
-
       - name: Deploy to Azure Functions
         uses: Azure/functions-action@v1
         with:
           app-name: 'test-function-app-har'
           publish-profile: ${{ secrets.AZURE_FUNCTIONAPP_PUBLISH_PROFILE }}
-          package: './functionapp.zip'
+          package: '/target'
