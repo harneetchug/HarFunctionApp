@@ -25,11 +25,10 @@ jobs:
       - name: Build with Maven
         run: mvn clean package azure-functions:package
 
-      - name: Debug package path
+      - name: Resolve package path
+        id: pkg
         run: |
-            echo "Resolved path:"
-            echo $PKG
-            ls -R $PKG
+            echo "path=$(ls -d target/azure-functions/* | head -n 1)" >> $GITHUB_OUTPUT
 
       - name: Deploy to Azure Functions
         uses: Azure/functions-action@v1
